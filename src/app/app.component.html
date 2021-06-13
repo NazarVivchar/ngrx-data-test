@@ -1,0 +1,46 @@
+<div>
+  <h1 class="header">Post</h1>
+
+  <div class="card">
+    <div class="state-info">
+      <b>Loading:&nbsp;&nbsp;</b>
+      <span>{{ loading$ | async }}</span>
+    </div>
+
+    <div class="state-info">
+      <b>Loaded:&nbsp;&nbsp;</b>
+      <span>{{ loaded$ | async }}</span>
+    </div>
+
+    <div class="state-info">
+      <b>Error:&nbsp;&nbsp;</b>
+      <span>{{ error$ | async }}</span>
+    </div>
+
+    <div class="controls">
+      <button (click)="load()">Load</button>
+      <button (click)="loadWithError()">Load with Error</button>
+    </div>
+
+    <div class="controls">
+      <button (click)="clear()">Clear</button>
+    </div>
+  </div>
+
+  <div style="margin-top: 64px">
+    <div *ngFor="let post of posts$ | async" class="card">
+      <h2>{{post.title}}</h2>
+      <p>{{post.body}}</p>
+
+      <div class="controls">
+        <button (click)="update(post)">Update</button>
+        <button (click)="updateWithError(post)">Update with Error</button>
+      </div>
+
+      <div class="controls">
+        <button class="red" (click)="delete(post)">Delete</button>
+        <button class="red" (click)="deleteWithError(post)">Delete with Error</button>
+      </div>
+    </div>
+  </div>
+</div>
