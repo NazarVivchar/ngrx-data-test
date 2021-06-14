@@ -58,7 +58,7 @@ export class AppComponent {
 
   public deleteWithError(post: Post) {
     this.postService.update(post, {
-      error: new Error('Mocked error for update'),
+      error: new Error('Mocked error for delete'),
     });
   }
 
